@@ -8,7 +8,7 @@
  * @package   Zend_OAuth
  */
 
- namespace EvaOAuth\Service\Http;
+namespace EvaOAuth\Service\Http;
 
 use EvaOAuth\Service\Token;
 use EvaOAuth\Exception;
@@ -34,13 +34,13 @@ class AccessToken extends \ZendOAuth\Http\AccessToken
         $defaultParams = $this->getParameters();
         $params = array(
             'grant_type' => 'authorization_code',
-			'client_id' => $this->_consumer->getConsumerKey(),
+            'client_id' => $this->_consumer->getConsumerKey(),
             'client_secret' => $this->_consumer->getConsumerSecret(),
             'redirect_uri' => $this->_consumer->getCallbackUrl(),
-		);
+        );
         $params = array_merge($defaultParams, $params);
         $response = $this->startRequestCycle($params);
-        $return   = new Token\Access($response, null, $this->_consumer->getAccessTokenFormat());
+        $return = new Token\Access($response, null, $this->_consumer->getAccessTokenFormat());
         return $return;
     }
 
@@ -66,8 +66,8 @@ class AccessToken extends \ZendOAuth\Http\AccessToken
     public function startRequestCycle(array $params)
     {
         $response = null;
-        $body     = null;
-        $status   = null;
+        $body = null;
+        $status = null;
         try {
             $response = $this->_attemptRequest($params);
         } catch (\Zend\Http\Client\Exception\ExceptionInterface $e) {
@@ -77,7 +77,7 @@ class AccessToken extends \ZendOAuth\Http\AccessToken
             ), null, $e);
         }
         if ($response !== null) {
-            $body   = $response->getBody();
+            $body = $response->getBody();
             $status = $response->getStatusCode();
         }
         if ($response === null // Request failure/exception
@@ -100,9 +100,11 @@ class AccessToken extends \ZendOAuth\Http\AccessToken
             'client_secret',
             'grant_type',
             'redirect_uri',
+            'appid',
+            'secret',
         );
-        foreach ($params as $key=>$value) {
-            if(false === in_array($key, $allowParams)){
+        foreach ($params as $key => $value) {
+            if (false === in_array($key, $allowParams)) {
                 unset($params[$key]);
             }
         }
