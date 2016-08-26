@@ -26,8 +26,8 @@ class Weixin extends AbstractAdapter
 
     public function getAccessToken($a, $b, $c, $d)
     {
-        if (!empty($this->_token)) {
-            return $this->_token;
+        if (!empty($this->accessToken)) {
+            return $this->accessToken;
         }
         $args = func_get_args();
         $code = isset($args[0]['code']) ? $args[0]['code'] : null;
@@ -43,7 +43,8 @@ class Weixin extends AbstractAdapter
         $res = $foo->startRequestCycle($tokenargs);
         $token = new Access($res, null, $this->getConsumer()->getAccessTokenFormat());
 
-        return $this->_token = $token;
+        $this->setAccessToken($token);
+        return $token;
     }
 
     public function _getRequestToken()
