@@ -24,7 +24,7 @@ class Weixin extends AbstractAdapter
     protected $openid;
 
 
-    public function getAccessToken($a, $b, $c, $d)
+    public function getAccessToken($a = null, $b = null, $c = null, $d = null)
     {
         if (!empty($this->accessToken)) {
             return $this->accessToken;
