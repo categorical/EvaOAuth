@@ -91,7 +91,7 @@ class Weixin extends AbstractAdapter
 
     private function getuserinfo($openid)
     {
-        if ($this->_userinfo || false === $this->_userinfo) {
+        if (isset($this->_userinfo)) {
             return $this->_userinfo;
         }
 
@@ -102,7 +102,7 @@ class Weixin extends AbstractAdapter
         ]);
         $response = $client->send();
         if ($response->getStatusCode() >= 300) {
-            return $this->userinfo = false;
+            return $this->_userinfo = false;
         }
 
         return $this->_userinfo = $this->parseJsonResponse($response);

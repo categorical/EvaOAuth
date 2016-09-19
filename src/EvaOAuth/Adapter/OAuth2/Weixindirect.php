@@ -12,7 +12,7 @@ class Weixindirect extends Weixin
 {
 
     protected $authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
-    
+
     public function getRequestTokenUrl()
     {
         $url = parent::getRequestTokenUrl();
