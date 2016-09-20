@@ -88,6 +88,9 @@ abstract class AbstractAdapter implements AdapterInterface
 
     public function getAdapterKey()
     {
+        if (isset($this->vendor)) {
+            return $this->vendor;
+        }
         $className = get_class($this);
         $className = explode('\\', $className);
         return strtolower(array_pop($className));

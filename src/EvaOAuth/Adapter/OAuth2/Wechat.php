@@ -8,8 +8,9 @@ use EvaOAuth\Service\Token\Access;
 use EvaOAuth\Service\Token\Request;
 use ZendOAuth\OAuth;
 
-class Weixin extends AbstractAdapter
+class Wechat extends AbstractAdapter
 {
+    protected $vendor = 'weixin';
     protected $accessTokenFormat = 'json';
 
     protected $authorizeUrl = 'https://open.weixin.qq.com/connect/qrconnect';
