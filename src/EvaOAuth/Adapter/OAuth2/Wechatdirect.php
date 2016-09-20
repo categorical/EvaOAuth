@@ -8,7 +8,7 @@ use EvaOAuth\Service\Token\Access;
 use EvaOAuth\Service\Token\Request;
 use ZendOAuth\OAuth;
 
-class Weixindirect extends Weixin
+class Wechatdirect extends Wechat
 {
 
     protected $authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
