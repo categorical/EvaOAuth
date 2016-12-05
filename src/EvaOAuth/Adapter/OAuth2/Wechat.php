@@ -81,6 +81,7 @@ class Wechat extends AbstractAdapter
         $token['unionid'] = $accessToken->getParam('unionid');
 
         $userinfo = $this->getuserinfo($token['openid']);
+        !empty($token['unionid']) || $token['unionid'] = isset($userinfo['unionid']) ? $userinfo['unionid'] : null;
         $token['remoteToken'] = isset($userinfo['openid']) ? $userinfo['openid'] : null;
         $token['remoteUserId'] = isset($userinfo['unionid']) ? $userinfo['unionid'] : null;
         $token['remoteUserName'] = isset($userinfo['nickname']) ? $userinfo['nickname'] : null;
